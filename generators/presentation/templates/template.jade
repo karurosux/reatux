@@ -1,0 +1,23 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import './<%= paramCaseName %>.presentation.scss';
+
+class <%= pascalCaseName %>Presentation extends React.Component {
+  render() {
+    return (
+      <div className="<%= paramCaseName %>">
+        <br />
+        <p info><%= titleCaseName %></p>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({ });
+
+export default connect(
+  mapStateToProps,
+  {
+    // actions here
+  }
+)(<%= pascalCaseName %>Presentation);
