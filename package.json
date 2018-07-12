@@ -1,24 +1,19 @@
 {
-  "name": "generator-reatux",
-  "version": "0.0.0",
+  "name": "reatux",
+  "version": "0.1.1",
   "description": "Generate react project with redux and foundation lib.",
-  "homepage": "",
+  "bin": {
+    "rtx": "index.js",
+    "reatux": "index.js"
+  },
+  "preferGlobal": true,
   "author": {
     "name": "Carlos Javier Gonzalez Vasquez",
-    "email": "justdevelopitmx@gmail.com",
-    "url": ""
+    "email": "justdevelopitmx@gmail.com"
   },
-  "files": [
-    "generators"
-  ],
-  "main": "generators/index.js",
-  "keywords": [
-    "react",
-    "generator",
-    "redux",
-    "foundation",
-    "yeoman-generator"
-  ],
+  "files": ["generators"],
+  "main": "index.js",
+  "keywords": ["react", "generator", "redux", "foundation", "yeoman-generator"],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
     "yeoman-assert": "^3.1.0",
@@ -33,37 +28,30 @@
     "jest": "^22.0.6"
   },
   "engines": {
-    "npm": ">= 4.0.0"
+    "npm": ">= 4.0.0",
+    "node": ">= 8.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
     "chalk": "^2.1.0",
+    "commander": "^2.16.0",
+    "yeoman-environment": "^2.3.0",
+    "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "scripts": {
-    "prepublishOnly": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -77,9 +65,7 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
   "repository": "karurosux/generator-react-redux-foundation",
   "license": "MIT"

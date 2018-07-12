@@ -5,12 +5,26 @@ const yosay = require('yosay');
 const changeCase = require('change-case');
 const folderScanner = require('folder-scanner');
 const path = require('path');
-const prompts = require('./prompts');
+let prompts = require('./prompts');
 
 module.exports = class extends Generator {
+  constructor(...args) {
+    super(...args);
+    this._configurateOptions();
+    this._declareVariables();
+  }
+
   prompting() {
+    if (this.options.appName) {
+      prompts = prompts.splice(1, prompts.length - 1);
+    }
+
     return this.prompt(prompts).then(props => {
       this.props = props;
+
+      if (this.options.appName) {
+        this.props.appName = this.options.appName;
+      }
     });
   }
 
@@ -35,6 +49,10 @@ module.exports = class extends Generator {
     }
   }
 
+  _declareVariables() {
+    this.props = {};
+  }
+
   _setCalculatedProperties() {
     this.props.paramCaseAppName = changeCase.paramCase(this.props.appName);
   }
@@ -52,5 +70,9 @@ module.exports = class extends Generator {
       this.destinationPath(relativeFilePath.replace('.jade', '')),
       this.props
     );
+  }
+
+  _configurateOptions() {
+    this.option('appName', { type: String });
   }
 };
