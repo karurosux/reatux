@@ -33,7 +33,9 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
+    "change-case": "^3.0.2",
     "commander": "^2.16.0",
+    "folder-scanner": "^1.0.0",
     "yeoman-environment": "^2.3.0",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"

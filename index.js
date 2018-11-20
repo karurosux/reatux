@@ -1,4 +1,6 @@
-const package = require('./package.json');
+#!/usr/bin/env node
+'use strict';
+const pkg = require('./package.json');
 const program = require('commander');
 const yeoman = require('yeoman-environment');
 const actions = require('./actions');
@@ -7,7 +9,7 @@ const env = yeoman.createEnv();
 env.register(require.resolve('./generators/app'), 'reatux');
 env.register(require.resolve('./generators/presentation'), 'presentation');
 
-program.version(package.version);
+program.version(pkg.version);
 
 program
   .command('app [name]')
