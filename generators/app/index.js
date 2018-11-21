@@ -1,7 +1,5 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
 const changeCase = require('change-case');
 const folderScanner = require('folder-scanner');
 const path = require('path');
@@ -46,6 +44,8 @@ module.exports = class extends Generator {
       case 'yarn':
         this.yarnInstall();
         break;
+      default:
+        this.log('No package manager selected.');
     }
   }
 
@@ -54,7 +54,11 @@ module.exports = class extends Generator {
   }
 
   _setCalculatedProperties() {
-    this.props.paramCaseAppName = changeCase.paramCase(this.props.appName);
+    this.props = {
+      ...this.props,
+      paramCaseAppName: changeCase.paramCase(this.props.appName),
+      titleCaseAppName: changeCase.titleCase(this.props.appName)
+    };
   }
 
   _copyFileList(filePaths, templateFolderPath) {
@@ -67,7 +71,7 @@ module.exports = class extends Generator {
     const relativeFilePath = path.relative(templateFolderPath, filePath);
     this.fs.copyTpl(
       filePath,
-      this.destinationPath(relativeFilePath.replace('.jade', '')),
+      this.destinationPath(relativeFilePath.replace('.ejs', '')),
       this.props
     );
   }

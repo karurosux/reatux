@@ -6,6 +6,10 @@ const yeoman = require('yeoman-environment');
 const actions = require('./actions');
 const env = yeoman.createEnv();
 
+const props = {
+  env
+};
+
 env.register(require.resolve('./generators/app'), 'reatux');
 env.register(require.resolve('./generators/presentation'), 'presentation');
 
@@ -15,12 +19,16 @@ program
   .command('app [name]')
   .alias('a')
   .description('creates a new react redux project.')
-  .action((name, options) => actions.app(name, options, env));
+  .action(actions.app(props));
 
 program
   .command('presentation <name>')
   .alias('p')
   .description('creates a new react redux presentation.')
-  .action((name, options) => actions.presentation(name, options, env));
+  .action(actions.presentation(props));
 
 program.parse(process.argv);
+
+if (program.args.length < 1) {
+  program.help();
+}

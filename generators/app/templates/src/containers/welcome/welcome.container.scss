@@ -1,0 +1,26 @@
+.welcome-container {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
+
+	h1,
+	p {
+		font-family: Roboto;
+		color: white;
+		text-align: center;
+	}
+
+	h1 {
+		font-size: 3rem;
+		font-weight: 300;
+		margin-bottom: 0px;
+		b {
+			font-weight: bold;
+		}
+	}
+
+	p {
+		max-width: 400px;
+	}
+}
