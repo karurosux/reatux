@@ -11,7 +11,7 @@
     "name": "Carlos Javier Gonzalez Vasquez",
     "email": "justdevelopitmx@gmail.com"
   },
-  "files": ["generators"],
+  "files": ["generators", "actions"],
   "main": "index.js",
   "keywords": ["react", "generator", "redux", "foundation", "yeoman-generator"],
   "devDependencies": {
