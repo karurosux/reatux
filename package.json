@@ -69,6 +69,6 @@
     },
     "plugins": ["prettier"]
   },
-  "repository": "karurosux/generator-react-redux-foundation",
+  "repository": "https://github.com/karurosux/reatux",
   "license": "MIT"
 }
