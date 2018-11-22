@@ -53,23 +53,6 @@
     "*.js": ["eslint --fix", "git add"],
     "*.json": ["prettier --write", "git add"]
   },
-  "eslintConfig": {
-    "extends": ["xo", "prettier"],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "printWidth": 90
-        }
-      ]
-    },
-    "plugins": ["prettier"]
-  },
   "repository": "https://github.com/karurosux/reatux",
   "license": "MIT"
 }
