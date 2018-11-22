@@ -1,7 +1,5 @@
 {
   "spellright.language": "es",
-  "spellright.documentTypes": [
-    "latex",
-    "plaintext"
-  ]
+  "spellright.documentTypes": ["latex", "plaintext"],
+  "prettier.trailingComma": "none"
 }

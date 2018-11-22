@@ -1,0 +1,11 @@
+{
+  "appName": "<%=paramCaseAppName%>",
+  "folders": {
+    "reducers": "./src/reducers/",
+    "actions": "./src/actions/",
+    "containers": "./src/containers/",
+    "presentations": ".src/presentations/",
+    "types": "./src/types/",
+    "tests": "./__tests__/"
+  }
+}
