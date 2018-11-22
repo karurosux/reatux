@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './<%= paramCaseName %>.container.scss';
 
-class <%= pascalCaseName %>container extends React.Component {
+class <%= pascalCaseName %>Container extends React.Component {
   render() {
     return (
       <div className="<%= paramCaseName %>">
@@ -20,4 +20,4 @@ export default connect(
   {
     // actions here
   }
-)(<%= pascalCaseName %>container);
+)(<%= pascalCaseName %>Container);
