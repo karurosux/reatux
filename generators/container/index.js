@@ -1,10 +1,8 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
 const changeCase = require('change-case');
-const folderScanner = require('folder-scanner');
-const path = require('path');
+const {get} = require('lodash');
+const {projectFileHelper} = require('../../helpers');
 
 module.exports = class extends Generator {
   constructor(...args) {
@@ -14,6 +12,9 @@ module.exports = class extends Generator {
   }
 
   prompting() {
+    this.projectConfig = projectFileHelper
+      .getProjectConfig(this.destinationPath());
+
     if (this.options.name) {
       if (this.options.name === '') {
         throw new Error('Name is required.');
@@ -24,7 +25,7 @@ module.exports = class extends Generator {
         {
           type: 'input',
           name: 'name',
-          message: 'Name of the presentation component?',
+          message: 'Name of the container component?',
           validate(name) {
             if (!name || name === '') {
               return 'Name is required.';
@@ -40,38 +41,42 @@ module.exports = class extends Generator {
   }
 
   configurating() {
-    this.props.name = this.props.name.replace(/\\/g, '/');
-
-    const splittedValue = this.props.name.split('/');
+    const fileName = this.props.name.replace(/\\/g, '/');
+    const splittedValue = fileName.split('/');
     const name = splittedValue[splittedValue.length - 1];
-    this.props.paramCaseName = changeCase.paramCase(name);
-    this.props.titleCaseName = changeCase.titleCase(name);
-    this.props.pascalCaseName = changeCase.pascalCase(name);
-    this.props.route = this.props.name.replace(name, '');
+    this.props = {
+      ...this.props,
+      name:fileName,
+      paramCaseName:changeCase.paramCase(name),
+      titleCaseName:changeCase.titleCase(name),
+      pascalCaseName: changeCase.pascalCase(name),
+      route:this.props.name.replace(name, '')
+    };
   }
 
   writing() {
-    const templatePath = this.templatePath('template.jade');
-    const styleTemplatePath = this.templatePath('styles-template.jade');
+    const creationFolder = get(this.projectConfig,'folders.containers','./src/containers');
+    const templatePath = this.templatePath('template.ejs');
+    const styleTemplatePath = this.templatePath('styles-template.ejs');
+
     this.fs.copyTpl(
       templatePath,
       this.destinationPath(
-        'src',
-        'presentation',
+        creationFolder,
         ...this.props.route.split('/'),
         this.props.paramCaseName,
-        `${this.props.paramCaseName}.presentation.js`
+        `${this.props.paramCaseName}.container.js`
       ),
       this.props
     );
+
     this.fs.copyTpl(
       styleTemplatePath,
       this.destinationPath(
-        'src',
-        'presentation',
+        creationFolder,
         ...this.props.route.split('/'),
         this.props.paramCaseName,
-        `${this.props.paramCaseName}.presentation.scss`
+        `${this.props.paramCaseName}.container.scss`
       ),
       this.props
     );

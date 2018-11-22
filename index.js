@@ -11,7 +11,7 @@ const props = {
 };
 
 env.register(require.resolve('./generators/app'), 'reatux');
-env.register(require.resolve('./generators/presentation'), 'presentation');
+env.register(require.resolve('./generators/container'), 'container');
 
 program.version(pkg.version);
 
@@ -22,10 +22,10 @@ program
   .action(actions.app(props));
 
 program
-  .command('presentation <name>')
+  .command('container <name>')
   .alias('p')
-  .description('creates a new react redux presentation.')
-  .action(actions.presentation(props));
+  .description('creates a new react redux container.')
+  .action(actions.container(props));
 
 program.parse(process.argv);
 

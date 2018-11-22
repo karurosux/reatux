@@ -1,7 +1,7 @@
 const app = require('./app.action');
-const presentation = require('./presentation.action');
+const container = require('./container.action');
 
 module.exports = {
   app,
-  presentation
+  container
 };
