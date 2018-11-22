@@ -7,28 +7,35 @@ const actions = require('./actions');
 const env = yeoman.createEnv();
 
 const props = {
-  env
+	env
 };
 
 env.register(require.resolve('./generators/app'), 'reatux');
+env.register(require.resolve('./generators/container'), 'container');
 env.register(require.resolve('./generators/presentation'), 'presentation');
 
 program.version(pkg.version);
 
 program
-  .command('app [name]')
-  .alias('a')
-  .description('creates a new react redux project.')
-  .action(actions.app(props));
+	.command('app [name]')
+	.alias('a')
+	.description('creates a new react redux project.')
+	.action(actions.app(props));
 
 program
-  .command('presentation <name>')
-  .alias('p')
-  .description('creates a new react redux presentation.')
-  .action(actions.presentation(props));
+	.command('container <name>')
+	.alias('c')
+	.description('creates a new react redux container.')
+	.action(actions.container(props));
+
+program
+	.command('presentation <name>')
+	.alias('p')
+	.description('creates a new react presentational component.')
+	.action(actions.presentation(props));
 
 program.parse(process.argv);
 
 if (program.args.length < 1) {
-  program.help();
+	program.help();
 }

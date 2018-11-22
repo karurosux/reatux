@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './<%= paramCaseName %>.presentation.scss';
+import './<%= paramCaseName %>.container.scss';
 
-class <%= pascalCaseName %>Presentation extends React.Component {
+class <%= pascalCaseName %>Container extends React.Component {
   render() {
     return (
       <div className="<%= paramCaseName %>">
@@ -20,4 +20,4 @@ export default connect(
   {
     // actions here
   }
-)(<%= pascalCaseName %>Presentation);
+)(<%= pascalCaseName %>Container);

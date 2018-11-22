@@ -1,0 +1,9 @@
+{
+  "extends": ["xo", "prettier"],
+  "env": {
+    "jest": true,
+    "node": true
+  },
+  "rules": {},
+  "plugins": ["prettier"]
+}

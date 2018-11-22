@@ -1,16 +1,16 @@
 const { projectFileHelper } = require('../helpers');
 
-const runApplicationGenerator = (props) => (name) => {
+const createContainerComponent = (props) => (name) => {
 	return () => {
 		const { env } = props;
-		env.run('reatux', {
-			appName: name
+		env.run('container', {
+			name
 		});
 	};
 };
 
 module.exports = (props) => (...args) => {
 	projectFileHelper
-		.ifNotProjectFolder()
-		.then(runApplicationGenerator(props)(...args));
+		.ifProjectFolder()
+		.then(createContainerComponent(props)(...args));
 };

@@ -1,0 +1,18 @@
+import React from 'react';
+import propTypes from 'prop-types';
+import './<%= paramCaseName %>.presentation.scss';
+
+const <%= pascalCaseName %>Presentation = (props) => {
+  return (
+    <div className="<%= paramCaseName %>">
+      <br />
+      <p info><%= titleCaseName %></p>
+    </div>
+  );
+};
+
+<%= pascalCaseName %>Presentation.propTypes = {};
+
+<%= pascalCaseName %>Presentation.defaultProps = {};
+
+export default <%= pascalCaseName %>Presentation;

@@ -1,7 +1,14 @@
-module.exports = props => name => {
-  const { env } = props;
+const { projectFileHelper } = require('../helpers');
 
-  env.run('presentation', {
-    name
-  });
+const createPresentationaComponent = (props) => (name) => {
+	const { env } = props;
+	env.run('presentation', {
+		name
+	});
+};
+
+module.exports = (props) => (...args) => {
+	projectFileHelper
+		.ifProjectFolder()
+		.then(createPresentationaComponent(props)(...args));
 };
