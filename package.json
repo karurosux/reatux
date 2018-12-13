@@ -1,7 +1,7 @@
 {
   "name": "reatux",
-  "version": "0.3.0",
-  "description": "Generate react project with redux.",
+  "version": "0.4.1",
+  "description": "Generate react project with redux and foundation lib.",
   "bin": {
     "rtx": "index.js",
     "reatux": "index.js"
