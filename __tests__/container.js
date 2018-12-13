@@ -4,10 +4,10 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fse = require('fs-extra');
 
-describe('generator-reatux:presentation', () => {
+describe('Container Generator', () => {
   beforeAll(() => {
     return helpers
-      .run(path.join(__dirname, '../generators/presentation'))
+      .run(path.join(__dirname, '../generators/container'))
       .withPrompts({
         name: 'x',
         paramCaseName: 'x',
@@ -30,11 +30,11 @@ describe('generator-reatux:presentation', () => {
       });
   });
 
-  it('should create a presentation js component file.', () => {
-    assert.file(['src/presentations/x/x.presentation.js']);
+  it('should create a container js component file.', () => {
+    assert.file(['src/containers/x/x.container.js']);
   });
 
-  it('should create a presentation scss component file.', () => {
-    assert.file(['src/presentations/x/x.presentation.scss']);
+  it('should create a container scss component file.', () => {
+    assert.file(['src/containers/x/x.container.scss']);
   });
 });
