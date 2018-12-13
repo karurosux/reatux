@@ -1,7 +1,7 @@
 {
   "name": "reatux",
   "version": "0.3.0",
-  "description": "Generate react project with redux and foundation lib.",
+  "description": "Generate react project with redux.",
   "bin": {
     "rtx": "index.js",
     "reatux": "index.js"
@@ -13,7 +13,7 @@
   },
   "files": ["generators", "actions", "helpers"],
   "main": "index.js",
-  "keywords": ["react", "generator", "redux", "foundation", "yeoman-generator"],
+  "keywords": ["react", "generator", "redux", "CLI Tool", "yeoman-generator"],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
     "yeoman-assert": "^3.1.0",
