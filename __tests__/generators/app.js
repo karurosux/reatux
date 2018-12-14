@@ -3,9 +3,9 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
-describe('Base Application', () => {
+describe('Base Project Application', () => {
   beforeAll(() => {
-    return helpers.run(path.join(__dirname, '../generators/app')).withPrompts({
+    return helpers.run(path.join(__dirname, '../../generators/app')).withPrompts({
       appName: 'app',
       packageManager: 'none',
       titleCaseAppName: '',

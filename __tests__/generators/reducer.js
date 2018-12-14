@@ -4,10 +4,10 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fse = require('fs-extra');
 
-describe('Container Generator', () => {
+describe('Reducer Generator', () => {
   beforeAll(() => {
     return helpers
-      .run(path.join(__dirname, '../generators/container'))
+      .run(path.join(__dirname, '../../generators/reducer'))
       .withPrompts({
         name: 'x',
         paramCaseName: 'x',
@@ -30,11 +30,7 @@ describe('Container Generator', () => {
       });
   });
 
-  it('should create a container js component file.', () => {
-    assert.file(['src/containers/x/x.container.js']);
-  });
-
-  it('should create a container scss component file.', () => {
-    assert.file(['src/containers/x/x.container.scss']);
+  it('should create a js reducer file.', () => {
+    assert.file(['src/reducers/x.reducer.js']);
   });
 });
