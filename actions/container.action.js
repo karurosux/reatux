@@ -4,8 +4,7 @@ const createContainerComponent = props => name => {
   return () => {
     const { env } = props;
     env.run('container', {
-      name,
-      force: true
+      name
     });
   };
 };
