@@ -1,5 +1,7 @@
 # Reatux CLI Tool for React
 
+> For the use of this tool you must be familiar with redux.
+
 ## Description
 This is a CLI tool for generating redux ready projects of react, with the capacity of generate 
 more redux or react components too.
