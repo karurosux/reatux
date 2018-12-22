@@ -2,13 +2,14 @@
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 const { get } = require('lodash');
-const { projectFileHelper } = require('../../helpers');
+const { projectFileHelper, streamModifierHelper } = require('../../helpers');
 
 module.exports = class extends Generator {
   constructor(...args) {
     super(...args);
     this._setFlags();
     this.props = {};
+    streamModifierHelper.prettierFormatModifier(this);
   }
 
   prompting() {
@@ -35,7 +36,7 @@ module.exports = class extends Generator {
             return true;
           }
         }
-      ]).then((props) => {
+      ]).then(props => {
         this.props = props;
       });
     }
