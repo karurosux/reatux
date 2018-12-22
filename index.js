@@ -3,12 +3,16 @@
 const pkg = require('./package.json');
 const program = require('commander');
 const yeoman = require('yeoman-environment');
+const chalk = require('chalk');
 const actions = require('./actions');
 const env = yeoman.createEnv();
 
 const props = {
   env
 };
+
+env.adapter.log.force = msg =>
+  env.adapter.log(`${chalk.green('update')} ${msg}`);
 
 env.register(require.resolve('./generators/app'), 'reatux');
 env.register(require.resolve('./generators/container'), 'container');

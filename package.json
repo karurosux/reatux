@@ -1,6 +1,6 @@
 {
   "name": "reatux",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Generate react project with redux and foundation lib.",
   "bin": {
     "rtx": "index.js",
@@ -37,6 +37,9 @@
     "commander": "^2.16.0",
     "folder-scanner": "^1.0.0",
     "fs-extra": "^7.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-match": "^1.0.3",
+    "gulp-prettier": "^2.0.0",
     "yeoman-environment": "^2.3.0",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"

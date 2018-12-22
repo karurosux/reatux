@@ -3,6 +3,7 @@ const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 const folderScanner = require('folder-scanner');
 const path = require('path');
+const { streamModifierHelper } = require('../../helpers');
 let prompts = require('./prompts');
 
 module.exports = class extends Generator {
@@ -10,6 +11,7 @@ module.exports = class extends Generator {
     super(...args);
     this._configurateOptions();
     this._declareVariables();
+    streamModifierHelper.prettierFormatModifier(this);
   }
 
   prompting() {

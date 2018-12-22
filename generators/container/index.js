@@ -1,19 +1,21 @@
 'use strict';
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
-const {get} = require('lodash');
-const {projectFileHelper} = require('../../helpers');
+const { get } = require('lodash');
+const { projectFileHelper, streamModifierHelper } = require('../../helpers');
 
 module.exports = class extends Generator {
   constructor(...args) {
     super(...args);
     this._setFlags();
     this.props = {};
+    streamModifierHelper.prettierFormatModifier(this);
   }
 
   prompting() {
-    this.projectConfig = projectFileHelper
-      .getProjectConfig(this.destinationPath());
+    this.projectConfig = projectFileHelper.getProjectConfig(
+      this.destinationPath()
+    );
 
     if (this.options.name) {
       if (this.options.name === '') {
@@ -46,16 +48,20 @@ module.exports = class extends Generator {
     const name = splittedValue[splittedValue.length - 1];
     this.props = {
       ...this.props,
-      name:fileName,
-      paramCaseName:changeCase.paramCase(name),
-      titleCaseName:changeCase.titleCase(name),
+      name: fileName,
+      paramCaseName: changeCase.paramCase(name),
+      titleCaseName: changeCase.titleCase(name),
       pascalCaseName: changeCase.pascalCase(name),
-      route:this.props.name.replace(name, '')
+      route: this.props.name.replace(name, '')
     };
   }
 
   writing() {
-    const creationFolder = get(this.projectConfig,'folders.containers','./src/containers');
+    const creationFolder = get(
+      this.projectConfig,
+      'folders.containers',
+      './src/containers'
+    );
     const templatePath = this.templatePath('template.ejs');
     const styleTemplatePath = this.templatePath('styles-template.ejs');
 
